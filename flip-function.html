@@ -49,7 +49,7 @@ p {
   display: table;
   position: absolute;
   height: 98%;
-  width: 98%;
+  width: 99%;
 }
 .middle {
   display: table-cell;
@@ -58,7 +58,7 @@ p {
 .inner {
   margin-left: auto;
   margin-right: auto;
-  width: 500px;
+  width: 600px;
 }
 .highlight {
     color: rgb(255, 0, 0);
@@ -77,6 +77,12 @@ span.arrow {
 span.colon {
     color: rgb(173, 65, 137);
 }
+span.comma {
+    color: rgb(173, 65, 137);
+}
+span.compose {
+    color: rgb(173, 65, 137);
+}
 span.bracket {
     color: rgb(173, 65, 137);
 }
@@ -87,11 +93,15 @@ span.bracket {
 <div class="outer">
     <div class="middle">
         <div class="inner">
-            <div class="code">type Box <span class="equal">=</span> <span class="bracket">{</span> a <span class="colon">:</span> Vector
-             b <span class="colon">:</span> Vector
-             c <span class="colon">:</span> Vector <span class="bracket">}</span>
+            <div class="code">flipBox <span class="colon">:</span> Box <span class="arrow">-></span> Box
 
-type Picture <span class="equal">=</span> Box <span class="arrow">-></span> Shape list</div>
+flipBox <span class="bracket">{</span> a, b, c <span class="bracket">}</span> <span class="equal">=</span> <span class="bracket">{</span> a <span class="equal">=</span> add a b
+                      <span class="comma">,</span> b <span class="equal">=</span> neg b
+                      <span class="comma">,</span> c <span class="equal">=</span> c <span class="bracket">}</span>
+
+flip <span class="colon">:</span> Picture <span class="arrow">-></span> Picture
+
+flip p <span class="equal">=</span> flipBox <span class="compose">>></span> p</div>
         </div>
     </div>
 </div>
@@ -101,8 +111,8 @@ type Picture <span class="equal">=</span> Box <span class="arrow">-></span> Shap
     <span style="float: right">@einarwh</span>
 </div> 
  <div class="footer">
-    <span style="float: left"><a href="picture-function.html"><=</a></span>
-    <span style="float: right"><a href="george-regular.html">=></a></span>
+    <span style="float: left"><a href="flip-letter-f.html"><=</a></span>
+    <span style="float: right"><a href="toss-letter-f.html">=></a></span>
 </div>
 
 </body>
