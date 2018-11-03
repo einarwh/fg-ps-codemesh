@@ -1,0 +1,1 @@
+A picture needs to be rendered on a printer or a screen by a device that expects to be given a sequence of commands. Programming that sequence of commands directly is much harder than having an application generate the commands automatically from the simpler, denotational description.

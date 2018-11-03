@@ -1,0 +1,128 @@
+.shadow {
+    background-color: rgb(222, 222, 222);
+}
+
+.code {
+    font-family: "Fira Code";
+    font-feature-settings: "calt"1;
+    text-rendering: optimizeLegibility;
+    white-space: pre-wrap;
+    word-break: break-all;
+    font-size: 24px;
+    padding: 15px;
+}
+
+.header {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-family: "Fira Code Light";
+    font-feature-settings: "calt"1;
+    text-rendering: optimizeLegibility;
+    font-size: 40px;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 40px;
+}
+
+.title {
+    position: fixed;
+    left: 0;
+    top: 90px;
+    width: 100%;
+    color: black;
+    text-align: center;
+    font-family: "Fira Code";
+    font-feature-settings: "calt"1;
+    text-rendering: optimizeLegibility;
+    font-size: 40px;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+p {
+    font-family: "Fira Code";
+    font-feature-settings: "calt"1;
+    text-rendering: optimizeLegibility;
+    font-size: 40px;
+}
+
+.outer {
+    display: table;
+    position: absolute;
+    height: 98%;
+    width: 99%;
+}
+
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.inner {
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+}
+
+.highlight {
+    color: rgb(255, 0, 0);
+}
+
+code {
+    color: black;
+    font-family: monospace;
+    font-size: 24px;
+}
+
+span.equal {
+    color: rgb(173, 65, 137);
+}
+
+span.arrow {
+    color: rgb(173, 65, 137);
+}
+
+span.colon {
+    color: rgb(173, 65, 137);
+}
+
+span.comma {
+    color: rgb(173, 65, 137);
+}
+
+span.compose {
+    color: rgb(173, 65, 137);
+}
+
+span.bracket {
+    color: rgb(173, 65, 137);
+}
+
+span.parens {
+    color: rgb(173, 65, 137);
+}
+
+span.slash {
+    color: rgb(173, 65, 137);
+}
+
+span.op {
+    color: rgb(173, 65, 137);
+}
