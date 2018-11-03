@@ -58,7 +58,7 @@ p {
 .inner {
   margin-left: auto;
   margin-right: auto;
-  width: 600px;
+  width: 850px;
 }
 .highlight {
     color: rgb(255, 0, 0);
@@ -89,23 +89,46 @@ span.bracket {
 span.parens {
     color: rgb(173, 65, 137);
 }
+span.slash {
+    color: rgb(173, 65, 137);
+}
+span.op {
+    color: rgb(173, 65, 137);
+}
 </style>
 </head> 
 <body>
 
+<!--
+    aboveRatio : Int -> Int -> Picture -> Picture -> Picture 
+aboveRatio m n p1 p2 = 
+  \box -> 
+    let 
+      f = m / m + n
+      (b1, b2) = splitVertically f box
+    in 
+      (p1 b1) ++ (p2 b2) 
+
+above : Picture -> Picture -> Picture 
+above = aboveRatio 1 1  
+ -->
+
 <div class="outer">
     <div class="middle">
         <div class="inner">
-            <div class="code">tossBox <span class="colon">:</span> Box <span class="arrow">-></span> Box
+            <div class="code">aboveRatio <span class="colon">:</span> Int <span class="arrow">-></span> Int <span class="arrow">-></span> Picture <span class="arrow">-></span> Picture <span class="arrow">-></span> Picture
 
-tossBox <span class="bracket">{</span> a, b, c <span class="bracket">}</span> <span class="equal">=</span>
-    <span class="bracket">{</span> a <span class="equal">=</span> add a <span class="parens">(</span>scale 0.5 <span class="parens">(</span>add b c<span class="parens">)</span><span class="parens">)</span>
-    <span class="comma">,</span> b <span class="equal">=</span> scale 0.5 <span class="parens">(</span>add b c<span class="parens">)</span>
-    <span class="comma">,</span> c <span class="equal">=</span> scale 0.5 <span class="parens">(</span>sub c b<span class="parens">)</span> <span class="bracket">}</span>
+aboveRatio m n p1 p2 <span class="equal">=</span>
+    <span class="slash">\</span>box <span class="arrow">-></span>
+        let
+            f <span class="equal">=</span> m <span class="slash">/</span> <span class="parens">(</span>m <span class="op">+</span> n<span class="parens">)</span>
+            <span class="parens">(</span>b1<span class="comma">,</span> b2<span class="parens">)</span> <span class="equal">=</span> splitVertically f box 
+        in 
+            <span class="parens">(</span>p1 b1<span class="parens">)</span> <span class="op">++</span> <span class="parens">(</span>p2 b2<span class="parens">)</span>
 
-toss <span class="colon">:</span> Picture <span class="arrow">-></span> Picture
+above <span class="colon">:</span> Picture <span class="arrow">-></span> Picture <span class="arrow">-></span> Picture
 
-toss p <span class="equal">=</span> tossBox <span class="compose">>></span> p</div>
+above <span class="equal">=</span> aboveRatio 1 1</div>
         </div>
     </div>
 </div>
@@ -115,8 +138,8 @@ toss p <span class="equal">=</span> tossBox <span class="compose">>></span> p</d
     <span style="float: right">@einarwh</span>
 </div> 
  <div class="footer">
-    <span style="float: left"><a href="toss-letter-f.html"><=</a></span>
-    <span style="float: right"><a href="toss-letter-f-review.html">=></a></span>
+    <span style="float: left"><a href="above-george.html"><=</a></span>
+    <span style="float: right"><a href="above-george-review.html">=></a></span>
 </div>
 
 </body>

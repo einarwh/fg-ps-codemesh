@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="fira_code.css">
+<style>
+.code {
+    font-family: "Fira Code";
+      font-feature-settings: "calt" 1;  /* Enable ligatures for IE 10+, Edge */
+      text-rendering: optimizeLegibility; /* Force ligatures for Webkit, Blink, Gecko */
+      /*width: 30em;
+      margin: 5em auto;*/
+      white-space: pre-wrap;
+      word-break: break-all;
+      font-size: 24px;
+      background-color: rgb(222, 222, 222);
+    padding: 15px;
+}
+.header {
+   position: fixed;
+   left: 0;
+   top: 0;
+   width: 100%;
+   background-color: black;
+   color: white;
+   text-align: center;
+   font-family: 'Courier New', Courier, monospace;
+   font-size: 40px;
+}
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: black;
+   color: white;
+   text-align: center;
+   font-family: 'Courier New', Courier, monospace;
+   font-size: 40px;
+}
+a {
+    color: white;
+    text-decoration: none;
+}
+p {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 40px;
+}
+.outer {
+  display: table;
+  position: absolute;
+  height: 98%;
+  width: 99%;
+}
+.middle {
+  display: table-cell;
+  vertical-align: middle;
+}
+.inner {
+  margin-left: auto;
+  margin-right: auto;
+  width: 600px;
+}
+.highlight {
+    color: rgb(255, 0, 0);
+}
+code {
+    color: black;
+    font-family: monospace;
+    font-size: 24px;
+}
+span.equal {
+    color: rgb(173, 65, 137);
+}
+span.arrow {
+    color: rgb(173, 65, 137);
+}
+span.colon {
+    color: rgb(173, 65, 137);
+}
+span.comma {
+    color: rgb(173, 65, 137);
+}
+span.compose {
+    color: rgb(173, 65, 137);
+}
+span.bracket {
+    color: rgb(173, 65, 137);
+}
+span.parens {
+    color: rgb(173, 65, 137);
+}
+span.slash {
+    color: rgb(173, 65, 137);
+}
+span.op {
+    color: rgb(173, 65, 137);
+}
+</style>
+</head> 
+<body>
+
+<!--
+utile : Picture -> Picture 
+utile fish = 
+  let 
+    fishN = fish |> toss |> flip
+    fishW = turn fishN
+    fishS = turn fishW
+    fishE = turn fishS
+  in 
+    over fishN (over fishW (over fishS fishE))
+ -->
+
+<div class="outer">
+    <div class="middle">
+        <div class="inner">
+            <div class="code">utile <span class="colon">:</span> Picture <span class="arrow">-></span> Picture
+
+utile p <span class="equal">=</span>
+    let 
+        pn <span class="equal">=</span> <span class="parens">(</span>toss <span class="compose">>></span> flip<span class="parens">)</span> p 
+        pw <span class="equal">=</span> turn pn
+        ps <span class="equal">=</span> turn pw
+        pe <span class="equal">=</span> turn ps
+    in
+        over pn <span class="parens">(</span>over pw <span class="parens">(</span>over ps pe<span class="parens">)</span><span class="parens">)</span></div>
+    </div>
+</div>
+
+<div class="header">
+    <span style="float: left">A PostScript to Functional Geometry</span>
+    <span style="float: right">@einarwh</span>
+</div> 
+ <div class="footer">
+    <span style="float: left"><a href="utile.html"><=</a></span>
+    <span style="float: right"><a href="utile-review.html">=></a></span>
+</div>
+
+</body>
+</html>

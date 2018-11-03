@@ -2,6 +2,17 @@
 <html>
 <head>
 <style>
+.code {
+   font-family: "Fira Code";
+   font-feature-settings: "calt" 1;  /* Enable ligatures for IE 10+, Edge */
+   text-rendering: optimizeLegibility; /* Force ligatures for Webkit, Blink, Gecko */
+   /*width: 30em;
+   margin: 5em auto;*/
+   white-space: pre-wrap;
+   word-break: break-all;
+   font-size: 24px;
+   padding: 15px;
+}
 .header {
    position: fixed;
    left: 0;
@@ -9,6 +20,16 @@
    width: 100%;
    background-color: black;
    color: white;
+   text-align: center;
+   font-family: 'Courier New', Courier, monospace;
+   font-size: 40px;
+}
+.title {
+   position: fixed;
+   left: 0;
+   top: 90px;
+   width: 100%;
+   color: black;
    text-align: center;
    font-family: 'Courier New', Courier, monospace;
    font-size: 40px;
@@ -41,11 +62,13 @@ a {
 .inner {
   margin-left: auto;
   margin-right: auto;
-  width: 400px;
+  width: 300px;
 }
 </style>
 </head>
 <body>
+
+<div class="title"><div class="code" style="text-align: center; font-size: 40px">george</div></div>
 
 <div class="outer">
     <div class="middle">

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="fira_code.css">
+<style>
+.code {
+    font-family: "Fira Code";
+      font-feature-settings: "calt" 1;  /* Enable ligatures for IE 10+, Edge */
+      text-rendering: optimizeLegibility; /* Force ligatures for Webkit, Blink, Gecko */
+      /*width: 30em;
+      margin: 5em auto;*/
+      white-space: pre-wrap;
+      word-break: break-all;
+      font-size: 24px;
+      background-color: rgb(222, 222, 222);
+    padding: 15px;
+}
+.header {
+   position: fixed;
+   left: 0;
+   top: 0;
+   width: 100%;
+   background-color: black;
+   color: white;
+   text-align: center;
+   font-family: 'Courier New', Courier, monospace;
+   font-size: 40px;
+}
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: black;
+   color: white;
+   text-align: center;
+   font-family: 'Courier New', Courier, monospace;
+   font-size: 40px;
+}
+a {
+    color: white;
+    text-decoration: none;
+}
+p {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 40px;
+}
+.outer {
+  display: table;
+  position: absolute;
+  height: 98%;
+  width: 99%;
+}
+.middle {
+  display: table-cell;
+  vertical-align: middle;
+}
+.inner {
+  margin-left: auto;
+  margin-right: auto;
+  width: 650px;
+}
+.highlight {
+    color: rgb(255, 0, 0);
+}
+code {
+    color: black;
+    font-family: monospace;
+    font-size: 24px;
+}
+span.equal {
+    color: rgb(173, 65, 137);
+}
+span.arrow {
+    color: rgb(173, 65, 137);
+}
+span.colon {
+    color: rgb(173, 65, 137);
+}
+span.comma {
+    color: rgb(173, 65, 137);
+}
+span.compose {
+    color: rgb(173, 65, 137);
+}
+span.bracket {
+    color: rgb(173, 65, 137);
+}
+span.parens {
+    color: rgb(173, 65, 137);
+}
+span.slash {
+    color: rgb(173, 65, 137);
+}
+span.op {
+    color: rgb(173, 65, 137);
+}
+</style>
+</head> 
+<body>
+
+<!--
+sql : Int -> Picture -> Picture
+sql n p = 
+  let 
+    mm = utile p 
+    nw = corner n p 
+    sw = turn nw 
+    se = turn sw 
+    ne = turn se 
+    nm = side n p 
+    mw = turn nm 
+    sm = turn mw 
+    me = turn sm 
+  in
+    nonet nw nm ne mw mm me sw sm se
+ -->
+
+<div class="outer">
+    <div class="middle">
+        <div class="inner">
+            <div class="code">squarelimit <span class="colon">:</span> Int <span class="arrow">-></span> Picture <span class="arrow">-></span> Picture
+
+squarelimit n p <span class="equal">=</span>
+    let 
+        mm <span class="equal">=</span> utile p 
+        nw <span class="equal">=</span> corner n p 
+        sw <span class="equal">=</span> turn nw 
+        se <span class="equal">=</span> turn sw 
+        ne <span class="equal">=</span> turn se 
+        nm <span class="equal">=</span> side n p 
+        mw <span class="equal">=</span> turn nm
+        sm <span class="equal">=</span> turn mw
+        me <span class="equal">=</span> turn sm
+    in 
+        nonet nw nm ne mw mm me sw sm se</div>
+    </div>
+</div>
+
+<div class="header">
+    <span style="float: left">A PostScript to Functional Geometry</span>
+    <span style="float: right">@einarwh</span>
+</div> 
+ <div class="footer">
+    <span style="float: left"><a href="squarelimit-3.html"><=</a></span>
+    <span style="float: right"><a href="squarelimit.html">=></a></span>
+</div>
+
+</body>
+</html>
