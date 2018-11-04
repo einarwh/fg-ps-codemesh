@@ -1,1 +1,3 @@
 A picture needs to be rendered on a printer or a screen by a device that expects to be given a sequence of commands. Programming that sequence of commands directly is much harder than having an application generate the commands automatically from the simpler, denotational description.
+
+The pictures were drawn by a Java program which generated postscript commands directly. The Java was written in a functional style (using static methods) so that the definitions which were executed were exactly as they appear in the paper.

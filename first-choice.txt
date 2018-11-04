@@ -1,0 +1,5 @@
+It probably is true that PostScript is not everyone’s first choice as a
+programming language. But let’s put that premise behind us, and assume
+that you need (or want) to write a program in the PostScript language.
+
+-- Thinking in PostScript
