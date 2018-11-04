@@ -1,3 +1,5 @@
+(figures.ps) run 
+
 // Look at draw-f procedure
 
 100 100 translate
@@ -6,6 +8,8 @@ draw-f
 3 0 translate 
 90 rotate 
 draw-f
+
+(fgeo.ps) run 
 
 // Look at create-picture procedure 
 
@@ -91,6 +95,108 @@ some-box exch exec
 /nw load /ne load /sw load /se load quartet /q exch def 
 
 /q load /q load /q load /q load quartet some-box exch exec 
+
+// Look at nonet 
+
+/h load /e load /n load /d load /e load /r load /s load /o load /n load nonet
+some-box exch exec 
+
+gone
+
+/h load /e load /n load /d load /e load /r load /s load /o load /n load nonet
+/name exch def 
+
+/name load zoom zoom zoom some-box exch exec 
+
+// Look at zoom 
+
+some-box fish 
+
+gone
+
+/fish load dup turn turn over
+some-box exch exec 
+
+// Look at over 
+
+gone
+
+/fish load ttile 
+fish-box exch exec 
+
+// Look at ttile 
+
+.
+
+/fish load utile 
+fish-box exch exec 
+
+// Look at utile
+
+.
+
+/fish load 1 side 
+some-box exch exec 
+
+.
+
+/fish load 3 side 
+some-box exch exec 
+
+.
+
+// Look at side 
+
+/fish load 1 corner 
+some-box exch exec 
+
+. 
+
+/fish load 3 corner 
+some-box exch exec 
+
+// Look at corner 
+
+.
+
+/fish load 1 square-limit 
+some-box exch exec 
+
+/fish load 3 square-limit 
+some-box exch exec 
+
+// In color
+
+(colors.ps) run 
+
+/fish load some-lens exch exec 
+
+.
+
+
+/fish load rehue some-lens exch exec 
+
+.
+
+// Look at rehue
+
+/fish load rehue rehue some-lens exch exec 
+.
+
+/fish load rehue rehue rehue some-lens exch exec 
+.
+
+/fish load ttile-1 some-lens exch exec 
+.
+
+// Change color (grey -> 0.6 0.3 0.8)
+
+(colors.ps) run 
+
+/fish load ttile-1 some-lens exch exec 
+.
+
+/fish load 4 square-limit big-lens exch exec 
 
 
 
