@@ -1,0 +1,99 @@
+// Look at draw-f procedure
+
+100 100 translate
+200 200 scale
+draw-f
+3 0 translate 
+90 rotate 
+draw-f
+
+// Look at create-picture procedure 
+
+// Create a picture!
+/f /draw-f load create-picture def 
+
+some-box
+pstack
+
+f
+
+gone
+
+some-box turn-box turn-box
+
+f
+
+gone
+
+skew-box 
+pstack 
+
+f 
+
+skew-box toss-box f
+
+gone
+
+/g /draw-george load create-picture def 
+
+some-box g
+
+gone
+
+/botbox some-box 0.5 scale-vert def 
+/topbox some-box 0.5 move-vert 0.5 scale-vert def 
+
+/gtt /g load turn turn def 
+
+botbox gtt topbox g 
+
+gone
+
+// Look at above-ratio 
+
+
+/g load /gtt load above 
+
+some-box exch exec
+
+gone
+
+/g load /gtt load above 
+
+some-box turn exch exec
+
+gone
+
+/g load flip /g load beside 
+
+some-box exch exec
+
+gone
+
+/g load flip /g load 2 copy
+beside
+1 2 beside-ratio
+1 3 beside-ratio
+some-box exch exec
+
+gone
+
+// Look at quartet
+
+/nw /g load def 
+/ne /g load flip turn turn def
+/sw /g load turn turn def 
+/se /g load flip def 
+
+/nw load /ne load /sw load /se load quartet 
+some-box exch exec 
+
+/nw load /ne load /sw load /se load quartet /q exch def 
+
+/q load /q load /q load /q load quartet some-box exch exec 
+
+
+
+
+
+
