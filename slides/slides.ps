@@ -7114,6 +7114,83 @@ FontName currentdict end definefont pop
   % PICTURE END
 } def 
 
+/set-black {
+  0 0 0 setrgbcolor
+} def 
+
+/set-red {
+  1 0 0 setrgbcolor
+} def 
+
+/set-white {
+  1 1 1 setrgbcolor
+} def 
+
+/draw-complex-object-quote {
+  gsave 
+  /FiraCode-Regular findfont
+  32 scalefont
+  setfont
+
+  170 350 translate
+
+  /xpos 0 def 
+  /ypos 0 def 
+  /newline { 
+    ypos 40 sub 
+    /ypos exch def 
+    xpos ypos moveto 
+  } def
+  /n { show newline }
+
+  xpos ypos moveto 
+  set-black
+  (A ) show set-red (picture) show set-black ( is an example) show newline 
+  (of a ) show set-red (complex object) show set-black ( that) show newline  
+  (can be described in terms) show newline 
+  (of its ) show set-red (parts) show set-black (.) show
+
+  grestore 
+} def
+
+/draw-picture-function-quote {
+  gsave 
+  /FiraCode-Regular findfont
+  32 scalefont
+  setfont
+
+  120 380 translate
+
+  /xpos 0 def 
+  /ypos 0 def 
+  /newline { 
+    ypos 40 sub 
+    /ypos exch def 
+    xpos ypos moveto 
+  } def
+  /n { show newline }
+
+  /show-black {
+    set-black 
+    show 
+  } def 
+
+  /show-red {
+    set-red 
+    show 
+  } def 
+
+  xpos ypos moveto 
+  (Let us define a picture as a ) show-black newline 
+  (function) show-red ( which takes three) show-black newline 
+  (arguments, each being two-space ) show-black newline 
+  (vectors) show-red ( and returns ) show-black (a set of) show-red newline 
+  (graphical objects) show-red ( to be) show-black newline 
+  (rendered on the output device.) show-black
+
+  grestore 
+} def
+
 draw-escher-woodcut-image 
 draw-header 
 draw-footer-index
@@ -7128,6 +7205,22 @@ draw-footer
 
 showpage
 
+%%Page: 3 3
+
+draw-complex-object-quote
+draw-header 
+draw-footer
+
+showpage
+
+%%Page: 4 4
+
+draw-picture-function-quote
+draw-header 
+draw-footer
+
+showpage
+
 %%Trailer
-%%Pages:      2
+%%Pages:      4
 %%EOF
