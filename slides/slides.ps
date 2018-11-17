@@ -7257,12 +7257,12 @@ FontName currentdict end definefont pop
   set-black
   newpath 
   0 0 moveto 
-  250 12 sub 0 lineto 
+  300 12 sub 0 lineto 
   stroke
   newpath 
-  250 0 moveto 
-  250 12 sub 4 lineto 
-  250 12 sub -4 lineto 
+  300 0 moveto 
+  300 12 sub 4 lineto 
+  300 12 sub -4 lineto 
   closepath
   fill 
 } def 
@@ -7271,8 +7271,8 @@ FontName currentdict end definefont pop
   set-black
   newpath
   0  
-  12 { 
-    20 add 
+  11 { 
+    25 add 
     dup 3 2 copy neg 
     moveto lineto stroke 
   } repeat 
@@ -7304,7 +7304,42 @@ FontName currentdict end definefont pop
   [50 50] [0 0] a-color
   draw-vector-arrow
   draw-coordinates
+  grestore 
+} def 
 
+% [[xa ya][xb yb][xc yc]]
+/draw-picture-with-box {
+  gsave 
+  275 125 translate         % [a b c]
+  aload                     % a b c [a b c] 
+  4 1 roll                  % [a b c] a b c
+  3 1 roll                  % [a b c] c a b
+  vadd                      % [a b c] c a+b
+  d-color                   % [a b c] c a+b dc
+  draw-vector-dashed-line   % [a b c]
+  aload                     % a b c [a b c] 
+  4 1 roll                  % [a b c] a b c
+  3 -1 roll                 % [a b c] b c a
+  vadd                      % [a b c] b c+a
+  d-color                   % [a b c] b c+a dc
+  draw-vector-dashed-line   % [a b c]
+  aload                     % a b c [a b c] 
+  4 1 roll                  % [a b c] a b c
+  pop exch                  % [a b c] b a
+  b-color                   % [a b c] b a bc
+  draw-vector-arrow         % [a b c]
+  aload                     % a b c [a b c] 
+  4 1 roll                  % [a b c] a b c
+  3 1 roll                  % [a b c] c a b
+  pop                       % [a b c] c a
+  c-color                   % [a b c] c a cc
+  draw-vector-arrow         % [a b c]
+  aload pop                 % a b c
+  pop pop                   % a
+  [0 0]                     % a [0 0]
+  a-color                   % a [0 0] ac
+  draw-vector-arrow
+  draw-coordinates
   grestore 
 } def 
 
@@ -7320,14 +7355,71 @@ FontName currentdict end definefont pop
   sqrt 
 } def 
 
-% draw arrows and dashed outlines
-% [ [xa ya] [xb yb] [xc yc] ]
-/draw-box {
-  aload pop        % [xa ya] [xb yb] [xc yc]
-  pop pop          % for now, get rid of b and c
-  vlength          % la
-
+% [x1 y1] [x2 y2]
+/dotproduct {
+  aload pop          % [x1 y1] x2 y2 
+  3 -1 roll          % x2 y2 [x1 y1]
+  aload pop          % x2 y2 x1 y1
+  exch               % x2 y2 y1 x1 
+  4 1 roll           % x1 x2 y2 y1
+  mul                % x1 x2 y
+  3 1 roll           % y x1 x2 
+  mul                % y x 
+  add                % dp
 } def 
+
+%% [x y] f -> [x' y'] where x' = x * f, y' = y * f 
+/vscale {
+  exch           % f [x y]
+  aload pop      % f x y
+  2 index        % f x y f 
+  mul            % f x y', y' = y * f
+  3 1 roll       % y' f x
+  mul            % y' x', x' = f * x
+  exch           % x' y'
+  2 array        % x' y' [. .]
+  astore         % [x' y']
+} def
+
+%% [x1 y1] [x2 y2] -> [x y], where x = x1 + x2 y1 + y2
+/vadd {
+  aload pop      % [x1 y1] x2 y2
+  3 2 roll       % x2 y2 [x1 y1]
+  aload pop      % x2 y2 x1 y1
+  exch           % x2 y2 y1 x1
+  4 -1 roll      % y2 y1 x1 x2
+  add            % y2 y1 x', x' = x1 + x2 
+  3 1 roll       % x' y2 y1
+  add            % x' y', y' = y2 + y1
+  2 array        % x' y' [. .]
+  astore         % [x' y']
+} def
+
+%% [x1 y1] [x2 y2] -> [x y], where x = x1 - x2 y1 - y2
+/vsub {
+  aload pop      % [x1 y1] x2 y2 
+  3 2 roll       % x2 y2 [x1 y1]
+  aload pop      % x2 y2 x1 y1
+  exch           % x2 y2 y1 x1
+  4 -1 roll      % y2 y1 x1 x2 
+  sub            % y2 y1 x', x' = x1 - x2
+  3 1 roll       % x' y2 y1 
+  exch           % x' y1 y2 
+  sub            % x' y', y' = y1 - y2 
+  2 array        % x' y' [. .]
+  astore         % [x' y']
+} def
+
+%% [x y] -> [x' y'] where x' = -x, y' = -y
+/vneg {
+  aload pop      % x y
+  neg            % x -y
+  exch           % -y x
+  neg            % -y -x
+  exch           % -x -y 
+  2 array        % -x -y [. .]
+  astore         % [-x -y] 
+} def
 
 draw-escher-woodcut-image 
 draw-header 
@@ -7430,7 +7522,7 @@ showpage
 
 
 (george) draw-title
-draw-picture-with-coordinates
+[[75 75][150 0][0 150]] draw-picture-with-box
 
 draw-header 
 draw-footer
@@ -7440,7 +7532,7 @@ showpage
 %%Page: 7 7
 
 (also george) draw-title
-draw-picture-with-coordinates
+[[75 40][80 10][30 200]] draw-picture-with-box
 
 draw-header 
 draw-footer
@@ -7450,7 +7542,7 @@ showpage
 %%Page: 8 8 
 
 (still george) draw-title
-draw-picture-with-coordinates
+[[50 75][200 10][-10 80]] draw-picture-with-box
 
 draw-header 
 draw-footer
