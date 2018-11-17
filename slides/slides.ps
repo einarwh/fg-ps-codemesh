@@ -6,8 +6,6 @@
 %%BeginProlog
 %%EndProlog
 
-%%Page: 1 1
-
 << /PageSize [842 595] >> setpagedevice
 
 12 dict begin
@@ -7237,6 +7235,44 @@ FontName currentdict end definefont pop
   grestore 
 } def
 
+/draw-turn-function {
+  gsave 
+  /FiraCode-Regular findfont
+  32 scalefont
+  setfont
+
+  100 450 translate
+
+  /xpos 0 def 
+  /ypos 0 def 
+  /newline { 
+    ypos 40 sub 
+    /ypos exch def 
+    xpos ypos moveto 
+  } def
+  /n { show newline }
+
+  /show-black { set-black show } def 
+
+  /show-purple { set-purple show } def 
+
+  xpos ypos moveto 
+  (turnBox ) show-black (:) show-purple ( Box ) show-black (->) show-purple ( Box ) show-black newline 
+  newline 
+
+  (turnBox ) show-black ({) show-purple ( a) show-black (,) show-purple ( b) show-black (,) show-purple ( c ) show-black (} = {) show-purple ( a ) show-black (=) show-purple ( add a b ) show-black newline 
+  (turnBox { a, b, c } = ) stringwidth pop dup % indent indent 
+  ypos moveto (,) show-purple ( b ) show-black (=) show-purple ( c ) show-black newline 
+  ypos moveto (,) show-purple ( c ) show-black (=) show-purple ( neg b ) show-black (}) show-purple newline 
+  newline 
+
+  (turn ) show-black (:) show-purple ( Picture ) show-black (->) show-purple ( Picture ) show-black newline 
+  newline 
+  (turn p ) show-black (=) show-purple ( turnBox ) show-black (>>) show-purple ( p ) show-black newline 
+
+  grestore 
+} def
+
 % title string on stack
 /draw-title {
   gsave 
@@ -7252,6 +7288,26 @@ FontName currentdict end definefont pop
 
   grestore
 } def 
+
+% title string on stack
+/draw-center-text {
+  gsave 
+  /FiraCode-Regular findfont
+  32 scalefont
+  setfont
+
+  0 260 translate
+  0 0 moveto
+  dup stringwidth pop pagew exch sub 2 div
+  0 moveto 
+  set-black show
+
+  grestore
+} def 
+
+/draw-implication-arrow {
+    (=>) draw-center-text
+} def
 
 /draw-coordinate-arrow {
   set-black
@@ -8409,6 +8465,55 @@ draw-footer
 
 showpage
 
+%%Page: 9 9 
+
+(turn) draw-title
+gsave 
+100 150 translate
+[[50 50][150 0][0 150]] f
+grestore  
+
+draw-implication-arrow
+
+gsave 
+pagew 100 sub 250 sub 150 translate
+[[50 50][150 0][0 150]] /f load turn exec
+grestore  
+
+draw-header 
+draw-footer
+
+showpage
+
+%%Page: 10 10  
+
+draw-turn-function
+draw-header 
+draw-footer
+
+showpage
+
+%%Page: 11 11  
+
+(turn) draw-title
+gsave 
+100 150 translate
+[[50 50][150 0][0 150]] f
+grestore  
+
+draw-implication-arrow
+
+gsave 
+pagew 100 sub 250 sub 150 translate
+[[50 50][150 0][0 150]] /f load turn exec
+grestore  
+
+draw-header 
+draw-footer
+
+showpage
+
+
 %%Trailer
-%%Pages:      8
+%%Pages:      9
 %%EOF
