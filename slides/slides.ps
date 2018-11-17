@@ -7122,6 +7122,19 @@ FontName currentdict end definefont pop
   1 0 0 setrgbcolor
 } def 
 
+%bcolor = "#2381bf" (35, 129, 191) [ 0.137 0.506 0.749 ]
+%ccolor = "#27b15b" (39, 177, 91)  [ 0.153 0.694 0.357 ]
+
+/purple-color [0.678 0.255 0.537] def
+/black-color [0 0 0] def
+/white-color [1 1 1] def
+
+/a-color [0.678 0.255 0.537] def
+/b-color [0.137 0.506 0.749] def
+/c-color [0.153 0.694 0.357] def
+/d-color [0.7 0.7 0.7] def
+
+
 % 173, 65, 137
 /set-purple {
   0.678 0.255 0.537 setrgbcolor
@@ -7269,13 +7282,51 @@ FontName currentdict end definefont pop
 /draw-coordinates {
   gsave 
   set-black
-  300 150 translate 
   draw-coordinate-arrow 
   draw-coordinate-arrow-dashes
   90 rotate 
   draw-coordinate-arrow
   draw-coordinate-arrow-dashes
   grestore  
+} def 
+
+/draw-picture-with-coordinates {
+  gsave 
+  300 150 translate 
+  [150 0] [50 200] d-color
+  draw-vector-dashed-line
+  [0 150] [200 50] d-color
+  draw-vector-dashed-line
+  [150 0] [50 50] b-color
+  draw-vector-arrow
+  [0 150] [50 50] c-color
+  draw-vector-arrow
+  [50 50] [0 0] a-color
+  draw-vector-arrow
+  draw-coordinates
+
+  grestore 
+} def 
+
+% VECTOR PROCEDURES 
+
+% [x y]
+/vlength {
+  aload pop      % x y
+  dup mul        % x y*y
+  exch           % y*y x
+  dup mul        % y*y x*x
+  add 
+  sqrt 
+} def 
+
+% draw arrows and dashed outlines
+% [ [xa ya] [xb yb] [xc yc] ]
+/draw-box {
+  aload pop        % [xa ya] [xb yb] [xc yc]
+  pop pop          % for now, get rid of b and c
+  vlength          % la
+
 } def 
 
 draw-escher-woodcut-image 
@@ -7335,8 +7386,51 @@ showpage
   grestore  
 } def 
 
+% [x y] [x0 y0] [color]
+/draw-vector-arrow {
+  gsave 
+  aload pop setrgbcolor  % [x y] [x0 y0]
+  aload pop translate    % [x y]
+  aload                  % x y [x y]
+  vlength                % x y a-len
+  3 1 roll               % a-len x y 
+  exch atan              % a-len a-ang
+  rotate                 % a-len
+  newpath 
+  0 0 moveto 
+  dup 12 sub 0 lineto    % a-len
+  stroke
+  newpath 
+  dup 0 moveto           % a-len
+  dup 12 sub 4 lineto    % a-len
+  dup 12 sub -4 lineto   % a-len
+  closepath
+  fill 
+  pop 
+  grestore  
+} def 
+
+% [x y] [x0 y0] [color]
+/draw-vector-dashed-line {
+  gsave 
+  aload pop setrgbcolor  % [x y] [x0 y0]
+  aload pop translate    % [x y]
+  aload                  % x y [x y]
+  vlength                % x y a-len
+  3 1 roll               % a-len x y 
+  exch atan              % a-len a-ang
+  rotate                 % a-len
+  newpath 
+  0 0 moveto 
+  0 lineto               %
+  [3] 0 setdash
+  stroke 
+  grestore  
+} def 
+
+
 (george) draw-title
-draw-coordinates
+draw-picture-with-coordinates
 
 draw-header 
 draw-footer
@@ -7346,7 +7440,7 @@ showpage
 %%Page: 7 7
 
 (also george) draw-title
-draw-coordinates
+draw-picture-with-coordinates
 
 draw-header 
 draw-footer
@@ -7356,7 +7450,7 @@ showpage
 %%Page: 8 8 
 
 (still george) draw-title
-draw-coordinates
+draw-picture-with-coordinates
 
 draw-header 
 draw-footer
