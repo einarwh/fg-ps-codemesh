@@ -7037,7 +7037,7 @@ FontName currentdict end definefont pop
   % FOOTER BACKGROUND END
 } def
 
-/draw-footer-text {
+/draw-footer-right-text {
   % TEXT ON FOOTER BEGIN
   gsave 
   /FiraCode-Regular findfont
@@ -7052,10 +7052,33 @@ FontName currentdict end definefont pop
   % TEXT ON FOOTER END
 } def 
 
-draw-header 
-draw-footer
+/draw-footer-left-text {
+  % TEXT ON FOOTER BEGIN
+  gsave 
+  /FiraCode-Regular findfont
+  24 scalefont
+  setfont
 
-/draw-escher-woodcut {
+  12 18 moveto
+  1 1 1 setrgbcolor
+  (<=) show
+
+  grestore 
+  % TEXT ON FOOTER END
+} def 
+
+/draw-footer-index {
+  draw-footer-background
+  draw-footer-right-text
+} def 
+
+/draw-footer {
+  draw-footer-background
+  draw-footer-left-text
+  draw-footer-right-text
+} def 
+
+/draw-escher-woodcut-image {
   %%% PICTURE 
   gsave
   275 145 translate 
@@ -7073,10 +7096,35 @@ draw-footer
   % PICTURE END
 } def 
 
+/draw-funcgeo-abstract-image {
+  % PICTURE (1170 × 793)
+  gsave
+  125 100 translate 
+  590 400 scale     % 842 
+  1170              % number of pixels in the horizontal axis
+  793               % number of pixels in the vertical axis
+  8                 % bits per color channel (1, 2, 4, or 8)
+  [1170 0 0 -793 0 793]      % transform array... maps unit square to pixel [ w 0 0 -h 0 h ]
+  (funcgeo-abstract.jpg) (r) file  % see page 587 and page 77 for more details
+  /DCTDecode filter       % see page  589
+  false                   % pull channels from separate sources
+  3                       % 3 color channels (RGB)
+  colorimage  
+  grestore 
+  % PICTURE END
+} def 
+
+draw-escher-woodcut-image 
+draw-header 
+draw-footer-index
+
 showpage
 
 %%Page: 2 2
 
+draw-funcgeo-abstract-image
+draw-header 
+draw-footer
 
 showpage
 
