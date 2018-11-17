@@ -7224,6 +7224,22 @@ FontName currentdict end definefont pop
   grestore 
 } def
 
+% title string on stack
+/draw-title {
+  gsave 
+  /FiraCode-Regular findfont
+  32 scalefont
+  setfont
+
+  0 470 translate
+  0 0 moveto
+  dup stringwidth pop pagew exch sub 2 div
+  0 moveto 
+  set-black show
+
+  grestore
+} def 
+
 draw-escher-woodcut-image 
 draw-header 
 draw-footer-index
@@ -7262,6 +7278,78 @@ draw-footer
 
 showpage
 
+%%Page: 6 6
+
+/draw-arrow {
+  gsave 
+  set-purple
+  100 100 translate 
+  newpath 
+  0 0 moveto 
+  200 12 sub 0 lineto 
+  stroke
+  newpath 
+  200 0 moveto 
+  200 12 sub 4 lineto 
+  200 12 sub -4 lineto 
+  closepath
+  fill 
+  grestore  
+} def 
+
+draw-arrow 
+(george) draw-title
+
+draw-header 
+draw-footer
+
+showpage
+
+%%Page: 7 7
+
+draw-arrow 
+(also george) draw-title
+
+draw-header 
+draw-footer
+
+showpage
+
+%%Page: 8 8 
+
+/draw-coordinate-arrow {
+  set-black
+  newpath 
+  0 0 moveto 
+  250 12 sub 0 lineto 
+  stroke
+  newpath 
+  250 0 moveto 
+  250 12 sub 4 lineto 
+  250 12 sub -4 lineto 
+  closepath
+  fill 
+
+} def 
+
+/draw-coordinates {
+  gsave 
+  set-black
+  300 150 translate 
+  draw-coordinate-arrow 
+  90 rotate 
+  draw-coordinate-arrow
+  grestore  
+} def 
+
+(still george) draw-title
+draw-coordinates
+
+draw-header 
+draw-footer
+
+showpage
+
 %%Trailer
-%%Pages:      5
+%%Pages:      8
 %%EOF
