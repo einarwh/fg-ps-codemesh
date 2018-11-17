@@ -7256,43 +7256,14 @@ FontName currentdict end definefont pop
 
 /draw-coordinate-arrow-dashes {
   set-black
-  newpath 
-  20 3 moveto 
-  20 -3 lineto
-  stroke  
-  40 3 moveto 
-  40 -3 lineto
-  stroke  
-  60 3 moveto 
-  60 -3 lineto
-  stroke  
-  80 3 moveto 
-  80 -3 lineto
-  stroke  
-  100 3 moveto 
-  100 -3 lineto
-  stroke  
-  120 3 moveto 
-  120 -3 lineto
-  stroke  
-  140 3 moveto 
-  140 -3 lineto
-  stroke  
-  160 3 moveto 
-  160 -3 lineto
-  stroke  
-  180 3 moveto 
-  180 -3 lineto
-  stroke  
-  200 3 moveto 
-  200 -3 lineto
-  stroke  
-  220 3 moveto 
-  220 -3 lineto
-  stroke  
-  240 3 moveto 
-  240 -3 lineto
-  stroke  
+  newpath
+  0  
+  12 { 
+    20 add 
+    dup 3 2 copy neg 
+    moveto lineto stroke 
+  } repeat 
+  pop 
 } def 
 
 /draw-coordinates {
