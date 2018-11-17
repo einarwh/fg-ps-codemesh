@@ -7240,6 +7240,73 @@ FontName currentdict end definefont pop
   grestore
 } def 
 
+/draw-coordinate-arrow {
+  set-black
+  newpath 
+  0 0 moveto 
+  250 12 sub 0 lineto 
+  stroke
+  newpath 
+  250 0 moveto 
+  250 12 sub 4 lineto 
+  250 12 sub -4 lineto 
+  closepath
+  fill 
+} def 
+
+/draw-coordinate-arrow-dashes {
+  set-black
+  newpath 
+  20 3 moveto 
+  20 -3 lineto
+  stroke  
+  40 3 moveto 
+  40 -3 lineto
+  stroke  
+  60 3 moveto 
+  60 -3 lineto
+  stroke  
+  80 3 moveto 
+  80 -3 lineto
+  stroke  
+  100 3 moveto 
+  100 -3 lineto
+  stroke  
+  120 3 moveto 
+  120 -3 lineto
+  stroke  
+  140 3 moveto 
+  140 -3 lineto
+  stroke  
+  160 3 moveto 
+  160 -3 lineto
+  stroke  
+  180 3 moveto 
+  180 -3 lineto
+  stroke  
+  200 3 moveto 
+  200 -3 lineto
+  stroke  
+  220 3 moveto 
+  220 -3 lineto
+  stroke  
+  240 3 moveto 
+  240 -3 lineto
+  stroke  
+} def 
+
+/draw-coordinates {
+  gsave 
+  set-black
+  300 150 translate 
+  draw-coordinate-arrow 
+  draw-coordinate-arrow-dashes
+  90 rotate 
+  draw-coordinate-arrow
+  draw-coordinate-arrow-dashes
+  grestore  
+} def 
+
 draw-escher-woodcut-image 
 draw-header 
 draw-footer-index
@@ -7297,8 +7364,8 @@ showpage
   grestore  
 } def 
 
-draw-arrow 
 (george) draw-title
+draw-coordinates
 
 draw-header 
 draw-footer
@@ -7307,8 +7374,8 @@ showpage
 
 %%Page: 7 7
 
-draw-arrow 
 (also george) draw-title
+draw-coordinates
 
 draw-header 
 draw-footer
@@ -7316,31 +7383,6 @@ draw-footer
 showpage
 
 %%Page: 8 8 
-
-/draw-coordinate-arrow {
-  set-black
-  newpath 
-  0 0 moveto 
-  250 12 sub 0 lineto 
-  stroke
-  newpath 
-  250 0 moveto 
-  250 12 sub 4 lineto 
-  250 12 sub -4 lineto 
-  closepath
-  fill 
-
-} def 
-
-/draw-coordinates {
-  gsave 
-  set-black
-  300 150 translate 
-  draw-coordinate-arrow 
-  90 rotate 
-  draw-coordinate-arrow
-  grestore  
-} def 
 
 (still george) draw-title
 draw-coordinates
