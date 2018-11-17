@@ -7122,6 +7122,11 @@ FontName currentdict end definefont pop
   1 0 0 setrgbcolor
 } def 
 
+% 173, 65, 137
+/set-purple {
+  0.678 0.255 0.537 setrgbcolor
+} def 
+
 /set-white {
   1 1 1 setrgbcolor
 } def 
@@ -7170,15 +7175,9 @@ FontName currentdict end definefont pop
   } def
   /n { show newline }
 
-  /show-black {
-    set-black 
-    show 
-  } def 
+  /show-black { set-black show } def 
 
-  /show-red {
-    set-red 
-    show 
-  } def 
+  /show-red { set-red show } def 
 
   xpos ypos moveto 
   (Let us define a picture as a ) show-black newline 
@@ -7188,6 +7187,40 @@ FontName currentdict end definefont pop
   (graphical objects) show-red ( to be) show-black newline 
   (rendered on the output device.) show-black
 
+  grestore 
+} def
+
+/draw-picture-function-types {
+  gsave 
+  /FiraCode-Regular findfont
+  32 scalefont
+  setfont
+
+  120 380 translate
+
+  /xpos 0 def 
+  /ypos 0 def 
+  /newline { 
+    ypos 40 sub 
+    /ypos exch def 
+    xpos ypos moveto 
+  } def
+  /n { show newline }
+
+  /show-black { set-black show } def 
+
+  /show-purple { set-purple show } def 
+
+  xpos ypos moveto 
+  (type Box = {) dup 
+  (type Box ) show-black (= {) show-purple ( a ) show-black (:) show-purple ( Vector) show-black newline 
+  stringwidth pop ypos moveto
+  ( b ) show-black (:) show-purple ( Vector) show-black newline
+  stringwidth pop ypos moveto
+  ( c ) show-black (:) show-purple ( Vector ) show-black (}) show-purple newline
+  newline 
+  (type Picture ) show-black (=) show-purple ( Box ) show-black (->) show-purple ( Rendering) show-black
+  
   grestore 
 } def
 
@@ -7221,6 +7254,14 @@ draw-footer
 
 showpage
 
+%%Page: 5 5
+
+draw-picture-function-types
+draw-header 
+draw-footer
+
+showpage
+
 %%Trailer
-%%Pages:      4
+%%Pages:      5
 %%EOF
