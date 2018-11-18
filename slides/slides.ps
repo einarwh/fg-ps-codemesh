@@ -7069,6 +7069,11 @@ FontName currentdict end definefont pop
   draw-footer-right-text
 } def 
 
+/draw-footer-final {
+  draw-footer-background
+  draw-footer-left-text
+} def 
+
 /draw-footer {
   draw-footer-background
   draw-footer-left-text
@@ -7332,7 +7337,7 @@ FontName currentdict end definefont pop
   32 scalefont
   setfont
 
-  85 380 translate
+  85 390 translate
 
   /xpos 0 def 
   /ypos 0 def 
@@ -9589,7 +9594,7 @@ showpage
 
 (quartet g1 g2 g3 g4) draw-title
 gsave 
-100 150 translate
+70 150 translate
 [[0 0][250 0][0 250]] gqs
 grestore  
 
@@ -9637,7 +9642,7 @@ showpage
 
 (nonet h e n d e r s o n) draw-title
 gsave 
-100 150 translate
+70 150 translate
 [[0 0][250 0][0 250]] name-spaced
 grestore  
 
@@ -10133,7 +10138,7 @@ showpage
 
 draw-thinking-in-ps-quote
 draw-header 
-draw-footer
+draw-footer-final
 
 showpage
 
