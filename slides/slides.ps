@@ -7348,6 +7348,54 @@ FontName currentdict end definefont pop
   grestore 
 } def
 
+% n 
+/indent {
+  string         % [ ... ] n long
+  stringwidth    % x y 
+  pop            % x
+  ypos           % x ypos
+  moveto         %  
+} def
+
+/draw-above-function {
+  gsave 
+  /FiraCode-Regular findfont
+  28 scalefont
+  setfont
+
+  50 470 translate
+
+  /xpos 0 def 
+  /ypos 0 def 
+  /newline { 
+    ypos 36 sub 
+    /ypos exch def 
+    xpos ypos moveto 
+  } def
+  /n { show newline }
+
+  /txt { set-black show } def 
+
+  /sym { set-purple show } def 
+
+  xpos ypos moveto 
+  (aboveRatio ) txt (:) sym ( Int ) txt (->) sym ( Int ) txt (->) show-purple ( Pic ) txt (->) sym ( Pic ) txt (->) sym ( Pic) txt newline
+
+  (aboveRatio m n p1 p2 ) txt (=) sym newline
+  4 indent (\\) sym (box ) txt (->) sym newline 
+  8 indent (let) txt newline 
+  12 indent (f ) txt (=) sym ( m ) txt (/ \() sym (m ) txt (+) sym ( n) txt (\)) sym newline 
+  12 indent (\() sym (b1) txt (,) sym ( b2) txt (\) =) sym ( splitVertically f box) txt newline
+  8 indent (in) txt newline 
+  12 indent (\() sym (p1 b1) txt (\) ++ \() sym (p2 b2) txt (\)) sym newline
+  newline 
+
+  (above ) show-black (:) show-purple ( Pic ) show-black (->) show-purple ( Pic ) show-black (->) show-purple ( Pic) show-black newline
+
+  (above p1 p2 ) show-black (=) show-purple ( aboveRatio 1 1) show-black newline
+
+  grestore 
+} def
 
 % title string on stack
 /draw-title {
@@ -7372,7 +7420,7 @@ FontName currentdict end definefont pop
   32 scalefont
   setfont
 
-  0 260 translate
+  0 267 translate
   0 0 moveto
   dup stringwidth pop pagew exch sub 2 div
   0 moveto 
@@ -7392,7 +7440,7 @@ FontName currentdict end definefont pop
   32 scalefont
   setfont
 
-  260 translate
+  267 translate
   0 0 moveto
   set-black show
 
@@ -8831,8 +8879,30 @@ draw-footer
 
 showpage
 
+%%Page: 23 23 
+
+draw-above-function
+draw-header 
+draw-footer
+
+showpage
+
+%%Page: 24 24
+
+(above george \(\(turn >> turn\) george\)) draw-title
+
+gsave
+/g load dup turn turn above
+[[75 75][150 0][0 150]]
+draw-picture-in-center-box
+grestore 
+
+draw-header 
+draw-footer
+
+showpage
 
 
 %%Trailer
-%%Pages:      21
+%%Pages:      24
 %%EOF
