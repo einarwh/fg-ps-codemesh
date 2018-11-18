@@ -8479,6 +8479,8 @@ FontName currentdict end definefont pop
 } def
 
 /g /draw-george load create-picture def
+/gtt /g load turn turn def
+/mg /g load /gtt load above def
 
 /fish /draw-hfish load create-picture def 
 
@@ -8864,14 +8866,14 @@ grestore
 
 gsave 
 250 150 translate
-[[50 50][150 0][0 150]] /g load turn turn exec 
+[[50 50][150 0][0 150]] gtt 
 grestore  
 
 draw-implication-arrow-right
 
 gsave 
 pagew 25 sub 250 sub 150 translate
-[[50 50][150 0][0 150]] /g load dup turn turn above exec
+[[50 50][150 0][0 150]] mg
 grestore  
 
 draw-header 
@@ -8892,7 +8894,7 @@ showpage
 (above george \(\(turn >> turn\) george\)) draw-title
 
 gsave
-/g load dup turn turn above
+/mg load
 [[75 75][150 0][0 150]]
 draw-picture-in-center-box
 grestore 
@@ -8908,17 +8910,14 @@ showpage
 
 gsave
 275 125 translate 
-[[75 75][150 0][0 150]] dup
+[[75 75][150 0][0 150]] dup dup % 3 boxes
 0.5 scale-box-v 
 exch 
 0.5 move-box-v
 0.5 scale-box-v 
-2 copy % double up on boxes
 
-/g load dup turn turn
-3 1 roll
-exec exec 
-% drawn pictures, still have boxes left
+3 -1 roll % put original box on top
+mg % draw mirrorgeorge
 
 exch % swap drawing order of boxes
 draw-just-box
@@ -8937,7 +8936,7 @@ showpage
 (mirrorgeorge) draw-title
 
 gsave
-/g load dup turn turn above
+/mg load
 [[75 75][150 0][0 150]]
 draw-picture-in-center-box
 grestore 
@@ -8947,7 +8946,48 @@ draw-footer
 
 showpage
 
+%%Page: 27 27
+
+(mirrorgeorge) draw-title
+
+gsave
+/mg load
+[[75 40][70 -10][30 210]]
+draw-picture-in-center-box
+grestore 
+
+draw-header 
+draw-footer
+
+showpage
+
+%%Page: 28 28
+
+(aboveRatio 2 1 mirrorgeorge george) draw-title
+
+gsave 
+25 150 translate
+[[50 50][150 0][0 150]] mg
+grestore  
+
+gsave 
+250 150 translate
+[[50 50][150 0][0 150]] g 
+grestore  
+
+draw-implication-arrow-right
+
+gsave 
+pagew 25 sub 250 sub 150 translate
+[[50 50][150 0][0 150]] /mg load /g load 2 1 above-ratio exec
+grestore  
+
+draw-header 
+draw-footer
+
+showpage
+
 
 %%Trailer
-%%Pages:      26
+%%Pages:      27
 %%EOF
