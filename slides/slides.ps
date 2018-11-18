@@ -7399,10 +7399,10 @@ FontName currentdict end definefont pop
   grestore 
 } def 
 
-% {p} [[xa ya][xb yb][xc yc]]
+% {p} [[xa ya][xb yb][xc yc]] x0 y0
 /draw-picture-in-box {
   gsave 
-  275 125 translate         % p bx
+  translate                 % p bx
   dup                       % p bx bx 
   3 -1 roll                 % bx bx p
   exec                      % bx
@@ -7438,6 +7438,10 @@ FontName currentdict end definefont pop
   grestore 
 } def 
 
+% {p} [[xa ya][xb yb][xc yc]] 
+/draw-picture-in-center-box {
+  275 125 draw-picture-in-box
+} def 
 
 % DRAWING PROCEDURES
 
@@ -8434,7 +8438,7 @@ showpage
 (george) draw-title
 /g load 
 [[75 75][150 0][0 150]]
-draw-picture-in-box
+draw-picture-in-center-box
 
 draw-header 
 draw-footer
@@ -8446,7 +8450,7 @@ showpage
 (also george) draw-title
 /g load 
 [[75 40][80 -10][25 200]]
-draw-picture-in-box
+draw-picture-in-center-box
 
 draw-header 
 draw-footer
@@ -8458,7 +8462,7 @@ showpage
 (still george) draw-title
 /g load 
 [[50 75][210 30][-10 70]]
-draw-picture-in-box
+draw-picture-in-center-box
 
 draw-header 
 draw-footer
@@ -8496,24 +8500,87 @@ showpage
 %%Page: 11 11  
 
 (turn) draw-title
-gsave 
-100 150 translate
-[[50 50][150 0][0 150]] f
-grestore  
+
+/f load 
+[[75 75][150 0][0 150]]
+75 125
+draw-picture-in-box
 
 draw-implication-arrow
 
-gsave 
-pagew 100 sub 250 sub 150 translate
-[[50 50][150 0][0 150]] /f load turn exec
-grestore  
+/f load 
+[[75 75][150 0][0 150]] turn-box
+475 125
+draw-picture-in-box
 
 draw-header 
 draw-footer
 
 showpage
 
+%%Page: 12 12  
+
+(turn >> turn) draw-title
+
+/f load 
+[[75 75][150 0][0 150]]
+75 125
+draw-picture-in-box
+
+draw-implication-arrow
+
+/f load 
+[[75 75][150 0][0 150]] turn-box turn-box
+475 125
+draw-picture-in-box
+
+draw-header 
+draw-footer
+
+showpage
+
+%%Page: 13 13  
+
+(turn >> turn >> turn) draw-title
+
+/f load 
+[[75 75][150 0][0 150]]
+75 125
+draw-picture-in-box
+
+draw-implication-arrow
+
+/f load 
+[[75 75][150 0][0 150]] turn-box turn-box turn-box
+475 125
+draw-picture-in-box
+
+draw-header 
+draw-footer
+
+showpage
+
+%%Page: 14 14  
+
+(turn >> turn >> turn >> turn) draw-title
+
+/f load 
+[[75 75][150 0][0 150]]
+75 125
+draw-picture-in-box
+
+draw-implication-arrow
+
+/f load 
+[[75 75][150 0][0 150]] turn-box turn-box turn-box turn-box
+475 125
+draw-picture-in-box
+
+draw-header 
+draw-footer
+
+showpage
 
 %%Trailer
-%%Pages:      9
+%%Pages:      14
 %%EOF
