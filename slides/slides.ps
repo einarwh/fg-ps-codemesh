@@ -7200,6 +7200,164 @@ FontName currentdict end definefont pop
   grestore 
 } def
 
+/draw-render-picture-quote {
+  gsave 
+  /FiraCode-Regular findfont
+  32 scalefont
+  setfont
+
+  120 350 translate
+
+  /xpos 0 def 
+  /ypos 0 def 
+  /newline { 
+    ypos 40 sub 
+    /ypos exch def 
+    xpos ypos moveto 
+  } def
+  /n { show newline }
+
+  /txt { set-black show } def 
+
+  /red { set-red show } def 
+
+  xpos ypos moveto 
+  (A picture needs to be ) txt (rendered) red newline  
+  (on a printer) red ( or a screen by a ) txt newline 
+  (device that expects to be given) txt newline 
+  (a ) txt (sequence of commands) red (.) txt newline
+
+  grestore 
+} def
+
+/draw-generate-commands-quote {
+  gsave 
+  /FiraCode-Regular findfont
+  32 scalefont
+  setfont
+
+  70 370 translate
+
+  /xpos 0 def 
+  /ypos 0 def 
+  /newline { 
+    ypos 40 sub 
+    /ypos exch def 
+    xpos ypos moveto 
+  } def
+  /n { show newline }
+
+  /txt { set-black show } def 
+
+  /red { set-red show } def 
+
+  xpos ypos moveto 
+  (Programming) red ( that sequence of commands) txt newline 
+  (directly ) txt (is much harder) red ( than having) txt newline 
+  (an application ) txt (generate the commands) red newline 
+  (automatically from the simpler,) txt newline 
+  (denotational description.) txt newline 
+  grestore 
+} def
+
+/draw-java-program-quote {
+  gsave 
+  /FiraCode-Regular findfont
+  32 scalefont
+  setfont
+
+  120 430 translate
+
+  /xpos 0 def 
+  /ypos 0 def 
+  /newline { 
+    ypos 40 sub 
+    /ypos exch def 
+    xpos ypos moveto 
+  } def
+  /n { show newline }
+
+  /txt { set-black show } def 
+
+  /red { set-red show } def 
+
+  xpos ypos moveto 
+  (The pictures were drawn by a) txt newline 
+  (Java) red ( program which generated) txt newline 
+  (PostScript) red ( commands directly.) txt newline 
+  (The ) txt (Java) red ( was written in a ) txt newline 
+  (functional style) red ( so that the ) txt newline 
+  (definitions which were executed ) txt newline 
+  (were ) txt (exactly) red ( as they appear in) txt newline
+  (the paper.) txt newline
+  grestore 
+} def
+
+/draw-ps-program-quote {
+  gsave 
+  /FiraCode-Regular findfont
+  32 scalefont
+  setfont
+
+  120 430 translate
+
+  /xpos 0 def 
+  /ypos 0 def 
+  /newline { 
+    ypos 40 sub 
+    /ypos exch def 
+    xpos ypos moveto 
+  } def
+  /n { show newline }
+
+  /txt { set-black show } def 
+
+  /red { set-red show } def 
+
+  xpos ypos moveto 
+  (The pictures were drawn by a) txt newline 
+  (PostScript) red ( program which generated) txt newline 
+  (PostScript) red ( commands directly.) txt newline 
+  (The ) txt (PostScript) red ( was written in a ) txt newline 
+  (functional style) red ( so that the ) txt newline 
+  (definitions which were executed ) txt newline 
+  (were ) txt (not unlike) red ( as they appear in) txt newline
+  (the paper.) txt newline
+  grestore 
+} def
+
+/draw-thinking-in-ps-quote {
+  gsave 
+  /FiraCode-Regular findfont
+  32 scalefont
+  setfont
+
+  85 380 translate
+
+  /xpos 0 def 
+  /ypos 0 def 
+  /newline { 
+    ypos 40 sub 
+    /ypos exch def 
+    xpos ypos moveto 
+  } def
+  /n { show newline }
+
+  /txt { set-black show } def 
+
+  /red { set-red show } def 
+
+  xpos ypos moveto 
+  (It probably is true that PostScript) txt newline 
+  (is ) txt (not everyone's first choice) red ( as a) txt newline 
+  (programming language. But let's put) txt newline 
+  (that premise behind us, and ) txt (assume) red newline 
+  (that you need \(or want\) to) red ( write a) txt newline 
+  (program in the PostScript language.) txt
+
+  grestore 
+} def
+
 /draw-picture-function-types {
   gsave 
   /FiraCode-Regular findfont
@@ -9939,8 +10097,46 @@ draw-footer
 
 showpage
 
+%%Page: 62 62
 
+draw-render-picture-quote
+draw-header 
+draw-footer
+
+showpage
+
+%%Page: 63 63
+
+draw-generate-commands-quote
+draw-header 
+draw-footer
+
+showpage
+
+%%Page: 64 64
+
+draw-java-program-quote
+draw-header 
+draw-footer
+
+showpage
+
+%%Page: 65 65
+
+draw-ps-program-quote
+draw-header 
+draw-footer
+
+showpage
+
+%%Page: 66 66
+
+draw-thinking-in-ps-quote
+draw-header 
+draw-footer
+
+showpage
 
 %%Trailer
-%%Pages:      55
+%%Pages:      66
 %%EOF
