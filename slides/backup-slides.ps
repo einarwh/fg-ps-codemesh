@@ -7337,9 +7337,9 @@ FontName currentdict end definefont pop
 
   (tossBox ) show-black ({) show-purple ( a) show-black (,) show-purple ( b) show-black (,) show-purple ( c ) show-black (} = ) show-purple newline
   (toss) stringwidth pop dup dup % indent indent indent
-  ypos moveto ({) show-purple ( a ) show-black (=) show-purple ( add a ) show-black (\() show-purple (scale 0.5 ) show-black (\() show-purple (add b c) show-black (\)\)) show-purple newline 
-  ypos moveto (,) show-purple ( b ) show-black (=) show-purple ( scale 0.5 ) show-black (\() show-purple (add b c) show-black (\)) show-purple newline
-  ypos moveto (,) show-purple ( c ) show-black (=) show-purple ( scale 0.5 ) show-black (\() show-purple (sub c b) show-black (\) }) show-purple newline
+  ypos moveto ({) show-purple ( a ) show-black (=) show-purple ( add a ) show-black ([) show-purple (scale 0.5 ) show-black ([) show-purple (add b c) show-black (]]) show-purple newline 
+  ypos moveto (,) show-purple ( b ) show-black (=) show-purple ( scale 0.5 ) show-black ([) show-purple (add b c) show-black (]) show-purple newline
+  ypos moveto (,) show-purple ( c ) show-black (=) show-purple ( scale 0.5 ) show-black ([) show-purple (sub c b) show-black (] }) show-purple newline
   newline 
 
   (toss ) show-black (:) show-purple ( Picture ) show-black (->) show-purple ( Picture ) show-black newline 
@@ -7384,25 +7384,6 @@ FontName currentdict end definefont pop
 /draw-implication-arrow {
     (=>) draw-center-text
 } def
-
-% xpos text
-/draw-vcenter-text {
-  gsave 
-  /FiraCode-Regular findfont
-  32 scalefont
-  setfont
-
-  260 translate
-  0 0 moveto
-  set-black show
-
-  grestore
-} def 
-
-/draw-implication-arrow-right {
-    (=>) 515 draw-vcenter-text
-} def
-
 
 /draw-coordinate-arrow {
   set-black
@@ -7494,7 +7475,13 @@ FontName currentdict end definefont pop
   grestore 
 } def 
 
-/draw-just-box {            % bx
+% {p} [[xa ya][xb yb][xc yc]] x0 y0
+/draw-picture-in-box {
+  gsave 
+  translate                 % p bx
+  dup                       % p bx bx 
+  3 -1 roll                 % bx bx p
+  exec                      % bx
   aload                     % a b c [a b c] 
   4 1 roll                  % [a b c] a b c
   3 1 roll                  % [a b c] c a b
@@ -7524,16 +7511,6 @@ FontName currentdict end definefont pop
   a-color                   % a [0 0] ac
   draw-vector-arrow
   draw-coordinates
-} def
-
-% {p} [[xa ya][xb yb][xc yc]] x0 y0
-/draw-picture-in-box {
-  gsave 
-  translate                 % p bx
-  dup                       % p bx bx 
-  3 -1 roll                 % bx bx p
-  exec                      % bx
-  draw-just-box
   grestore 
 } def 
 
@@ -8778,61 +8755,7 @@ draw-footer
 
 showpage
 
-%%Page: 21 21  
-
-(toss) draw-title
-
-/f load 
-[[75 40][150 0][0 150]]
-75 125
-draw-picture-in-box
-
-draw-implication-arrow
-
-/f load 
-[[75 40][150 0][0 150]] toss-box
-475 125
-draw-picture-in-box
-
-[[75 40][150 0][0 150]]
-gsave
-475 125 translate
-draw-just-box
-grestore
-
-%draw-header 
-%draw-footer
-
-showpage
-
-%%Page: 22 22
-
-(above george \(\(turn >> turn\) george\)) draw-title
-
-gsave 
-25 150 translate
-[[50 50][150 0][0 150]] g
-grestore  
-
-gsave 
-250 150 translate
-[[50 50][150 0][0 150]] /g load turn turn exec 
-grestore  
-
-draw-implication-arrow-right
-
-gsave 
-pagew 25 sub 250 sub 150 translate
-[[50 50][150 0][0 150]] /g load dup turn turn above exec
-grestore  
-
-draw-header 
-draw-footer
-
-showpage
-
-
 
 %%Trailer
-%%Pages:      21
+%%Pages:      20
 %%EOF
