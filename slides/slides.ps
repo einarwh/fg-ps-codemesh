@@ -7462,6 +7462,43 @@ FontName currentdict end definefont pop
   grestore 
 } def
 
+/draw-utile-function {
+  gsave 
+  /FiraCode-Regular findfont
+  28 scalefont
+  setfont
+
+  100 440 translate
+
+  /xpos 0 def 
+  /ypos 0 def 
+  /newline { 
+    ypos 36 sub 
+    /ypos exch def 
+    xpos ypos moveto 
+  } def
+  /n { show newline }
+
+  /txt { set-black show } def 
+
+  /sym { set-purple show } def 
+
+  xpos ypos moveto 
+
+  (utile ) txt (:) show-purple ( Picture ) txt (->) sym ( Picture) txt newline
+
+  (utile p ) txt (=) sym newline 
+  4 indent (let) txt newline 
+  8 indent (pn ) txt (= \() sym (toss ) txt (>>) sym ( flip) txt (\)) sym ( p) txt newline 
+  8 indent (pw ) txt (=) sym ( turn pn) txt newline 
+  8 indent (ps ) txt (=) sym ( turn pw) txt newline 
+  8 indent (pe ) txt (=) sym ( turn ps) txt newline 
+  4 indent (in) txt newline 
+  8 indent (over pn ) txt (\() sym (over pw ) txt (\() sym (over ps pe) txt (\)\)) sym newline 
+  
+  grestore 
+} def
+
 /draw-quartet-function {
   gsave 
   /FiraCode-Regular findfont
@@ -9453,6 +9490,49 @@ draw-footer
 
 showpage
 
+%%Page: 43 43
+
+(utile) draw-title
+
+gsave 
+100 150 translate
+[[50 50][150 0][0 150]] fish
+grestore  
+
+draw-implication-arrow
+
+gsave 
+pagew 100 sub 250 sub 150 translate
+[[50 50][150 0][0 150]] /fish load utile exec
+grestore  
+
+draw-header 
+draw-footer
+
+showpage
+
+%%Page: 44 44 
+
+draw-utile-function
+draw-header 
+draw-footer
+
+showpage
+
+%%Page: 45 45
+
+(utile) draw-title
+
+gsave 
+275 125 translate
+[[50 50][200 0][0 200]] /fish load utile exec
+grestore  
+
+draw-header 
+draw-footer
+
+showpage
+
 %%Trailer
-%%Pages:      42
+%%Pages:      45
 %%EOF
