@@ -7422,8 +7422,43 @@ FontName currentdict end definefont pop
   (quartet ) txt (:) sym ( P ) txt (->) sym ( P ) txt (->) sym ( P ) txt (->) sym ( P ) txt (->) sym ( P) txt newline
 
   (quartet nw ne sw se ) txt (=) sym newline  
-  4 indent ( above ) txt (\() sym (beside nw ne) txt (\)) sym newline
-  11 indent (\() sym (beside sw se) txt (\)) sym newline
+  4 indent (above ) txt (\() sym (beside nw ne) txt (\)) sym newline
+  10 indent (\() sym (beside sw se) txt (\)) sym newline
+
+  grestore 
+} def
+
+/draw-nonet-function {
+  gsave 
+  /FiraCode-Regular findfont
+  20 scalefont
+  setfont
+
+  100 380 translate
+
+  /xpos 0 def 
+  /ypos 0 def 
+  /newline { 
+    ypos 28 sub 
+    /ypos exch def 
+    xpos ypos moveto 
+  } def
+  /n { show newline }
+
+  /txt { set-black show } def 
+
+  /sym { set-purple show } def 
+
+  xpos ypos moveto 
+  (nonet ) txt (:) sym ( P ) txt (->) sym ( P ) txt (->) sym ( P ) txt (->) sym ( P ) txt (->) sym ( P ) txt (->) sym ( P ) txt (->) sym ( P ) txt (->) sym ( P ) txt (->) sym ( P ) txt (->) sym ( P) txt newline
+
+  4 indent (let) txt newline 
+  8 indent (row w m e ) txt (=) sym ( besideRatio 1 2 w ) txt (\() sym (beside m e) txt (\)) sym newline
+  8 indent (col n m s ) txt (=) sym ( aboveRatio 1 2 n ) txt (\() sym (above m s) txt (\)) sym newline
+  4 indent (in) txt newline 
+  8 indent (col ) txt (\() sym (row nw nm ne) txt (\)) sym newline
+  12 indent (\() sym (row nw nm ne) txt (\)) sym newline
+  12 indent (\() sym (row nw nm ne) txt (\)) sym newline
 
   grestore 
 } def
@@ -7656,7 +7691,7 @@ FontName currentdict end definefont pop
   0.30 0.80 lineto
   closepath
   0.01 setlinewidth
-  stroke 
+  fill 
 } def
 
 /draw-e {
@@ -7675,7 +7710,7 @@ FontName currentdict end definefont pop
   0.30 0.80 lineto
   closepath
   0.01 setlinewidth
-  stroke 
+  fill 
 } def
 
 /draw-n {
@@ -7692,7 +7727,7 @@ FontName currentdict end definefont pop
   0.30 0.80 lineto
   closepath
   0.01 setlinewidth
-  stroke 
+  fill 
 } def
 
 /draw-d {
@@ -7705,16 +7740,23 @@ FontName currentdict end definefont pop
   0.30 0.80 lineto
   0.30 0.20 lineto
 
+  closepath
+  fill 
+
+  set-white 
+
   0.40 0.30 moveto 
   0.52 0.30 lineto
   0.60 0.38 lineto
   0.60 0.62 lineto
   0.52 0.70 lineto
   0.40 0.70 lineto
-  closepath
 
-  0.01 setlinewidth
-  stroke 
+  closepath
+  fill 
+
+  set-black 
+
 } def
 
 /draw-r {
@@ -7732,6 +7774,11 @@ FontName currentdict end definefont pop
   0.30 0.80 lineto
   0.30 0.20 lineto 
 
+  closepath
+  fill 
+
+  set-white 
+
   0.40 0.55 moveto 
   0.60 0.55 lineto
   0.60 0.70 lineto
@@ -7739,8 +7786,10 @@ FontName currentdict end definefont pop
   0.40 0.55 lineto
 
   closepath
-  0.01 setlinewidth
-  stroke 
+  fill 
+
+  set-black 
+
 } def
 
 /draw-s {
@@ -7759,7 +7808,7 @@ FontName currentdict end definefont pop
   0.30 0.30 lineto
   closepath
   0.01 setlinewidth
-  stroke 
+  fill 
 } def
 
 /draw-o {
@@ -7771,6 +7820,11 @@ FontName currentdict end definefont pop
   0.30 0.80 lineto
   0.30 0.20 lineto
 
+  closepath 
+  fill 
+
+  set-white 
+
   0.40 0.30 moveto 
   0.60 0.30 lineto
   0.60 0.70 lineto
@@ -7778,8 +7832,10 @@ FontName currentdict end definefont pop
   0.40 0.30 lineto
 
   closepath
-  0.01 setlinewidth
-  stroke 
+  fill 
+
+  set-black
+
 } def
 
 /draw-george {
@@ -8377,6 +8433,28 @@ FontName currentdict end definefont pop
   1 2 above-ratio       % p'
 } def
 
+% Consumes: w m e 
+% Produces: p'
+/row-spaced {           % w m e
+  /blank load exch      % w m _ e 
+  1 2 beside-ratio      % w m _e
+  2 3 beside-ratio      % w m_e
+  /blank load exch      % w _ m_e 
+  1 5 beside-ratio      % w _m_e
+  2 6 beside-ratio      % w_m_e
+} def
+
+% Consumes: n m s 
+% Produces: p'
+/column-spaced {        % n m s 
+  /blank load exch      % w m _ e 
+  1 2 above-ratio       % w m _e
+  2 3 above-ratio       % w m_e
+  /blank load exch      % w _ m_e 
+  1 5 above-ratio       % w _m_e
+  2 6 above-ratio       % w_m_e
+} def
+
 % Consumes: nw nm ne mw mm me sw sm se 
 % Produces: p'
 /nonet {
@@ -8387,6 +8465,18 @@ FontName currentdict end definefont pop
   row          % m s n 
   3 1 roll     % n m s 
   column       % p'   
+} def
+
+% Consumes: nw nm ne mw mm me sw sm se 
+% Produces: p'
+/nonet-spaced {
+  row-spaced          % nw nm ne mw mm me s 
+  7 1 roll            % s nw nm ne mw mm me
+  row-spaced          % s nw nm ne m
+  5 1 roll            % m s nw nm n 
+  row-spaced          % m s n 
+  3 1 roll            % n m s 
+  column-spaced       % p'   
 } def
 
 % Consumes: p1 p2 
@@ -8509,6 +8599,30 @@ FontName currentdict end definefont pop
 /r /draw-r load create-picture def 
 /s /draw-s load create-picture def 
 /o /draw-o load create-picture def 
+/name 
+  /h load
+  /e load
+  /n load
+  /d load
+  /e load
+  /r load
+  /s load
+  /o load
+  /n load
+  nonet 
+def 
+/name-spaced
+  /h load
+  /e load
+  /n load
+  /d load
+  /e load
+  /r load
+  /s load
+  /o load
+  /n load
+  nonet-spaced
+def 
 
 /zoom {       % ?
   /h load     % ? h 
@@ -9140,7 +9254,48 @@ draw-footer
 
 showpage
 
+%%Page: 34 34
+
+(nonet h e n d e r s o n) draw-title
+gsave 
+100 150 translate
+[[0 0][250 0][0 250]] name-spaced
+grestore  
+
+draw-implication-arrow
+
+gsave 
+pagew 100 sub 250 sub 150 translate
+[[50 50][150 0][0 150]] name
+grestore  
+
+draw-header 
+draw-footer
+
+showpage
+
+%%Page: 35 35
+
+draw-nonet-function
+draw-header 
+draw-footer
+
+showpage
+
+%%Page: 36 36
+
+(nonets are just pictures) draw-title
+gsave 
+275 125 translate
+[[0 0][300 0][0 300]] /name load zoom zoom zoom exec
+grestore  
+
+draw-header 
+draw-footer
+
+showpage
+
 
 %%Trailer
-%%Pages:      33
+%%Pages:      36
 %%EOF
