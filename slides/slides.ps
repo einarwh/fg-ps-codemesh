@@ -1,5 +1,5 @@
 %!PS-Adobe-2.0 EPSF-2.0
-%%Title: Trying stuff 
+%%Title: Slides for A PostScript on Functional Geometry at CodeMesh 2018 
 %%Creator: Einar W. Høst 
 %%Pages: 1
 %%EndComments
@@ -7571,7 +7571,6 @@ FontName currentdict end definefont pop
   [0 0]                     % a [0 0]
   a-color                   % a [0 0] ac
   draw-vector-arrow
-  draw-coordinates
 } def
 
 % {p} [[xa ya][xb yb][xc yc]] x0 y0
@@ -7582,6 +7581,7 @@ FontName currentdict end definefont pop
   3 -1 roll                 % bx bx p
   exec                      % bx
   draw-just-box
+  draw-coordinates
   grestore 
 } def 
 
@@ -8902,7 +8902,52 @@ draw-footer
 
 showpage
 
+%%Page: 25 25
+
+(above george \(\(turn >> turn\) george\)) draw-title
+
+gsave
+275 125 translate 
+[[75 75][150 0][0 150]] dup
+0.5 scale-box-v 
+exch 
+0.5 move-box-v
+0.5 scale-box-v 
+2 copy % double up on boxes
+
+/g load dup turn turn
+3 1 roll
+exec exec 
+% drawn pictures, still have boxes left
+
+exch % swap drawing order of boxes
+draw-just-box
+draw-just-box
+
+draw-coordinates
+grestore 
+
+draw-header 
+draw-footer
+
+showpage
+
+%%Page: 26 26
+
+(mirrorgeorge) draw-title
+
+gsave
+/g load dup turn turn above
+[[75 75][150 0][0 150]]
+draw-picture-in-center-box
+grestore 
+
+draw-header 
+draw-footer
+
+showpage
+
 
 %%Trailer
-%%Pages:      24
+%%Pages:      26
 %%EOF
