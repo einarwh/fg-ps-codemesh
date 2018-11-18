@@ -7606,7 +7606,7 @@ FontName currentdict end definefont pop
   0.30 0.80 lineto
   closepath
   0.01 setlinewidth
-  stroke 
+  fill 
 } def
 
 /draw-h {
@@ -7781,7 +7781,7 @@ FontName currentdict end definefont pop
   0.50 0.30 lineto 
   0.60 0.00 lineto
 
-  0.01 setlinewidth
+  0.015 setlinewidth
   stroke 
 } def 
 
@@ -8318,6 +8318,20 @@ FontName currentdict end definefont pop
   above                 % p 
 } def
 
+/quartet-spaced {       % nw ne sw se
+  /blank load exch      % nw ne sw _ se 
+  1 2 beside-ratio      % nw ne sw sx
+  2 3 beside-ratio      % nw ne s 
+  3 1 roll              % s nw ne 
+  /blank load exch      % s nw _ ne 
+  1 2 beside-ratio      % s nw nx 
+  2 3 beside-ratio      % s n 
+  exch                  % n s
+  /blank load exch      % n _ s 
+  1 2 above-ratio       % n sx
+  2 3 above-ratio       %
+} def
+
 % Consumes: w m e 
 % Produces: p'
 /row {                  % w m e
@@ -8483,6 +8497,12 @@ FontName currentdict end definefont pop
 /mg /g load /gtt load above def
 /gf /g load flip def
 /tg /gf load /g load beside def
+/gnw /g load def 
+/gne /g load flip turn turn def 
+/gsw /g load turn turn def 
+/gse /g load flip def 
+/gq /gnw load /gne load /gsw load /gse load quartet def  
+/gqs /gnw load /gne load /gsw load /gse load quartet-spaced def  
 
 /fish /draw-hfish load create-picture def 
 
@@ -9041,7 +9061,27 @@ draw-footer
 
 showpage
 
+%%Page: 31 31 
+
+(quartet g1 g2 g3 g4) draw-title
+gsave 
+100 150 translate
+[[0 0][250 0][0 250]] gqs
+grestore  
+
+draw-implication-arrow
+
+gsave 
+pagew 100 sub 250 sub 150 translate
+[[50 50][150 0][0 150]] gq
+grestore  
+
+draw-header 
+draw-footer
+
+showpage
+
 
 %%Trailer
-%%Pages:      29
+%%Pages:      31
 %%EOF
