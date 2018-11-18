@@ -8481,6 +8481,8 @@ FontName currentdict end definefont pop
 /g /draw-george load create-picture def
 /gtt /g load turn turn def
 /mg /g load /gtt load above def
+/gf /g load flip def
+/tg /gf load /g load beside def
 
 /fish /draw-hfish load create-picture def 
 
@@ -8987,7 +8989,59 @@ draw-footer
 
 showpage
 
+%%Page: 29 29
+
+(beside \(flip george\) george) draw-title
+
+gsave 
+25 150 translate
+[[50 50][150 0][0 150]] gf
+grestore  
+
+gsave 
+250 150 translate
+[[50 50][150 0][0 150]] g
+grestore  
+
+draw-implication-arrow-right
+
+gsave 
+pagew 25 sub 250 sub 150 translate
+[[50 50][150 0][0 150]] tg
+grestore  
+
+draw-header 
+draw-footer
+
+showpage
+
+%%Page: 30 30
+
+(besideRatio 1 2 george twingeorge) draw-title
+
+gsave 
+25 150 translate
+[[50 50][150 0][0 150]] g
+grestore  
+
+gsave 
+250 150 translate
+[[50 50][150 0][0 150]] tg 
+grestore  
+
+draw-implication-arrow-right
+
+gsave 
+pagew 25 sub 250 sub 150 translate
+[[50 50][150 0][0 150]] /g load /tg load 1 2 beside-ratio exec
+grestore  
+
+draw-header 
+draw-footer
+
+showpage
+
 
 %%Trailer
-%%Pages:      27
+%%Pages:      29
 %%EOF
