@@ -8033,7 +8033,8 @@ FontName currentdict end definefont pop
    0.104  0.938 
    0.000  1.000 curveto 
 
-   0.007 setlinewidth
+   %0.007 setlinewidth
+   0.012 setlinewidth
    1 setlinejoin
    stroke 
 
@@ -8486,6 +8487,7 @@ FontName currentdict end definefont pop
     {              % box p1 p2
       2 index      % box p1 p2 box 
       exch         % box p1 box p2 
+      exec         % box p1 
       exec         %
     } /exec cvx
   ] cvx
@@ -8649,6 +8651,7 @@ def
 /gqs /gnw load /gne load /gsw load /gse load quartet-spaced def  
 
 /fish /draw-hfish load create-picture def 
+/fishtt /fish load turn turn def 
 
 draw-escher-woodcut-image 
 draw-header 
@@ -9300,6 +9303,32 @@ showpage
 gsave 
 275 125 translate
 [[50 50][200 0][0 200]] fish
+grestore  
+
+draw-header 
+draw-footer
+
+showpage
+
+%%Page: 38 38
+
+(over fish \(\(turn >> turn\) fish\)) draw-title
+
+gsave 
+50 150 translate
+[[50 50][150 0][0 150]] fish
+grestore  
+
+gsave 
+225 150 translate
+[[50 50][150 0][0 150]] fishtt
+grestore  
+
+draw-implication-arrow-right
+
+gsave 
+pagew 25 sub 250 sub 150 translate
+[[50 50][150 0][0 150]] /fish load /fishtt load over exec
 grestore  
 
 draw-header 
