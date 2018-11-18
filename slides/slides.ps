@@ -7396,6 +7396,72 @@ FontName currentdict end definefont pop
   grestore 
 } def
 
+/draw-over-function {
+  gsave 
+  /FiraCode-Regular findfont
+  32 scalefont
+  setfont
+
+  140 340 translate
+
+  /xpos 0 def 
+  /ypos 0 def 
+  /newline { 
+    ypos 40 sub 
+    /ypos exch def 
+    xpos ypos moveto 
+  } def
+  /n { show newline }
+
+  /txt { set-black show } def 
+
+  /sym { set-purple show } def 
+
+  xpos ypos moveto 
+
+  (over ) txt (:) show-purple ( Pic ) txt (->) sym ( Pic ) txt (->) sym ( Pic) txt newline
+
+  (over p1 p2 ) txt (=) newline 
+  4 indent (\\) sym (box ) txt (->) sym ( p1 box ) txt (++) sym ( p2 box ) txt newline
+
+  grestore 
+} def
+
+/draw-ttile-function {
+  gsave 
+  /FiraCode-Regular findfont
+  28 scalefont
+  setfont
+
+  100 390 translate
+
+  /xpos 0 def 
+  /ypos 0 def 
+  /newline { 
+    ypos 36 sub 
+    /ypos exch def 
+    xpos ypos moveto 
+  } def
+  /n { show newline }
+
+  /txt { set-black show } def 
+
+  /sym { set-purple show } def 
+
+  xpos ypos moveto 
+
+  (ttile ) txt (:) show-purple ( Picture ) txt (->) sym ( Picture) txt newline
+
+  (ttile p ) txt (=) sym newline 
+  4 indent (let) txt newline 
+  8 indent (pn ) txt (= \() sym (toss ) txt (>>) sym ( flip) txt (\)) sym ( p) txt newline 
+  8 indent (pe ) txt (= \() sym (turn ) txt (>>) sym ( turn ) txt (>>) sym ( turn) txt (\)) sym ( p) txt newline 
+  4 indent (in) txt newline 
+  8 indent (over p ) txt (\() sym (over pn pe) txt (\)) sym newline 
+  
+  grestore 
+} def
+
 /draw-quartet-function {
   gsave 
   /FiraCode-Regular findfont
@@ -9336,7 +9402,57 @@ draw-footer
 
 showpage
 
+%%Page: 39 39 
+
+draw-over-function
+draw-header 
+draw-footer
+
+showpage
+
+%%Page: 40 40
+
+(ttile) draw-title
+
+gsave 
+100 150 translate
+[[50 50][150 0][0 150]] fish
+grestore  
+
+draw-implication-arrow
+
+gsave 
+pagew 100 sub 250 sub 150 translate
+[[50 50][150 0][0 150]] /fish load ttile exec
+grestore  
+
+draw-header 
+draw-footer
+
+showpage
+
+%%Page: 41 41 
+
+draw-ttile-function
+draw-header 
+draw-footer
+
+showpage
+
+%%Page: 42 42
+
+(ttile) draw-title
+
+gsave 
+275 125 translate
+[[50 50][200 0][0 200]] /fish load ttile exec
+grestore  
+
+draw-header 
+draw-footer
+
+showpage
 
 %%Trailer
-%%Pages:      37
+%%Pages:      42
 %%EOF
