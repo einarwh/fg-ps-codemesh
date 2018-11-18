@@ -7573,6 +7573,48 @@ FontName currentdict end definefont pop
   grestore 
 } def
 
+/draw-square-limit-function {
+  gsave 
+  /FiraCode-Regular findfont
+  22 scalefont
+  setfont
+
+  140 470 translate
+
+  /xpos 0 def 
+  /ypos 0 def 
+  /newline { 
+    ypos 28 sub 
+    /ypos exch def 
+    xpos ypos moveto 
+  } def
+  /n { show newline }
+
+  /txt { set-black show } def 
+
+  /sym { set-purple show } def 
+
+  xpos ypos moveto 
+
+  (squareLimit ) txt (:) show-purple ( Int ) txt (->) sym ( Picture ) txt (->) sym ( Picture) txt newline
+
+  (squareLimit n p ) txt (=) sym newline 
+  4 indent (let) txt newline 
+  8 indent (mm ) txt (=) sym ( utile p) txt newline 
+  8 indent (nw ) txt (=) sym ( corner n p) txt newline 
+  8 indent (sw ) txt (=) sym ( turn nw) txt newline 
+  8 indent (se ) txt (=) sym ( turn sw) txt newline 
+  8 indent (ne ) txt (=) sym ( turn se) txt newline 
+  8 indent (nm ) txt (=) sym ( side n p) txt newline 
+  8 indent (mw ) txt (=) sym ( turn nm) txt newline 
+  8 indent (sm ) txt (=) sym ( turn mw) txt newline 
+  8 indent (me ) txt (=) sym ( turn sm) txt newline 
+  4 indent (in) txt newline 
+  8 indent (nonet nw nm ne mw mm me sw sm se) txt newline 
+
+  grestore 
+} def
+
 /draw-quartet-function {
   gsave 
   /FiraCode-Regular findfont
@@ -9790,6 +9832,113 @@ draw-header
 draw-footer
 
 showpage
+
+%%Page: 56 56
+
+(square-limit 0) draw-title
+
+gsave 
+100 150 translate
+[[25 25][200 0][0 200]] fish
+grestore  
+
+draw-implication-arrow
+
+gsave 
+pagew 100 sub 250 sub 150 translate
+[[25 25][200 0][0 200]] /fish load 0 square-limit exec
+grestore  
+
+draw-header 
+draw-footer
+
+showpage
+
+%%Page: 57 57
+
+(square-limit 1) draw-title
+
+gsave 
+100 150 translate
+[[25 25][200 0][0 200]] fish
+grestore  
+
+draw-implication-arrow
+
+gsave 
+pagew 100 sub 250 sub 150 translate
+[[25 25][200 0][0 200]] /fish load 1 square-limit exec
+grestore  
+
+draw-header 
+draw-footer
+
+showpage
+
+%%Page: 58 58
+
+(square-limit 2) draw-title
+
+gsave 
+100 150 translate
+[[25 25][200 0][0 200]] fish
+grestore  
+
+draw-implication-arrow
+
+gsave 
+pagew 100 sub 250 sub 150 translate
+[[25 25][200 0][0 200]] /fish load 2 square-limit exec
+grestore  
+
+draw-header 
+draw-footer
+
+showpage
+
+%%Page: 59 59
+
+(square-limit 3) draw-title
+
+gsave 
+100 150 translate
+[[25 25][200 0][0 200]] fish
+grestore  
+
+draw-implication-arrow
+
+gsave 
+pagew 100 sub 250 sub 150 translate
+[[25 25][200 0][0 200]] /fish load 3 square-limit exec
+grestore  
+
+draw-header 
+draw-footer
+
+showpage
+
+%%Page: 60 60
+
+draw-square-limit-function
+draw-header 
+draw-footer
+
+showpage
+
+%%Page: 61 61
+
+(Henderson's square limit) draw-title
+
+gsave 
+275 125 translate
+[[0 0][300 0][0 300]] /fish load 4 square-limit exec
+grestore  
+
+draw-header 
+draw-footer
+
+showpage
+
 
 
 %%Trailer
