@@ -8857,9 +8857,6 @@ showpage
 
 (above george \(\(turn >> turn\) george\)) draw-title
 
-/gtt /g load turn turn def 
-/mg /g load /gtt load above def 
-
 gsave 
 25 150 translate
 [[50 50][150 0][0 150]] g
@@ -8867,14 +8864,14 @@ grestore
 
 gsave 
 250 150 translate
-[[50 50][150 0][0 150]] gtt exec 
+[[50 50][150 0][0 150]] /g load turn turn exec 
 grestore  
 
 draw-implication-arrow-right
 
 gsave 
 pagew 25 sub 250 sub 150 translate
-[[50 50][150 0][0 150]] mg
+[[50 50][150 0][0 150]] /g load dup turn turn above exec
 grestore  
 
 draw-header 
@@ -8895,7 +8892,7 @@ showpage
 (above george \(\(turn >> turn\) george\)) draw-title
 
 gsave
-/mg load
+/g load dup turn turn above
 [[75 75][150 0][0 150]]
 draw-picture-in-center-box
 grestore 
@@ -8918,7 +8915,7 @@ exch
 0.5 scale-box-v 
 2 copy % double up on boxes
 
-/g load /gtt load 
+/g load dup turn turn
 3 1 roll
 exec exec 
 % drawn pictures, still have boxes left
@@ -8940,7 +8937,7 @@ showpage
 (mirrorgeorge) draw-title
 
 gsave
-/mg load
+/g load dup turn turn above
 [[75 75][150 0][0 150]]
 draw-picture-in-center-box
 grestore 
@@ -8949,48 +8946,6 @@ draw-header
 draw-footer
 
 showpage
-
-%%Page: 27 27
-
-(mirrorgeorge) draw-title
-
-gsave
-/mg load 
-[[75 40][70 -10][30 210]]
-draw-picture-in-center-box
-grestore 
-
-draw-header 
-draw-footer
-
-showpage
-
-%%Page: 28 28
-
-(aboveRatio 2 1 mirrorgeorge george) draw-title
-
-gsave 
-25 150 translate
-[[50 50][150 0][0 150]] mg
-grestore  
-
-gsave 
-250 150 translate
-[[50 50][150 0][0 150]] g 
-grestore  
-
-draw-implication-arrow-right
-
-gsave 
-pagew 25 sub 250 sub 150 translate
-[[50 50][150 0][0 150]] /g load dup turn turn above exec
-grestore  
-
-draw-header 
-draw-footer
-
-showpage
-
 
 
 %%Trailer
