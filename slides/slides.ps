@@ -7397,6 +7397,37 @@ FontName currentdict end definefont pop
   grestore 
 } def
 
+/draw-quartet-function {
+  gsave 
+  /FiraCode-Regular findfont
+  32 scalefont
+  setfont
+
+  120 340 translate
+
+  /xpos 0 def 
+  /ypos 0 def 
+  /newline { 
+    ypos 40 sub 
+    /ypos exch def 
+    xpos ypos moveto 
+  } def
+  /n { show newline }
+
+  /txt { set-black show } def 
+
+  /sym { set-purple show } def 
+
+  xpos ypos moveto 
+  (quartet ) txt (:) sym ( P ) txt (->) sym ( P ) txt (->) sym ( P ) txt (->) sym ( P ) txt (->) sym ( P) txt newline
+
+  (quartet nw ne sw se ) txt (=) sym newline  
+  4 indent ( above ) txt (\() sym (beside nw ne) txt (\)) sym newline
+  11 indent (\() sym (beside sw se) txt (\)) sym newline
+
+  grestore 
+} def
+
 % title string on stack
 /draw-title {
   gsave 
@@ -9081,7 +9112,15 @@ draw-footer
 
 showpage
 
+%%Page: 32 32
+
+draw-quartet-function
+draw-header 
+draw-footer
+
+showpage
+
 
 %%Trailer
-%%Pages:      31
+%%Pages:      32
 %%EOF
