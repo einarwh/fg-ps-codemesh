@@ -7499,6 +7499,44 @@ FontName currentdict end definefont pop
   grestore 
 } def
 
+/draw-side-function {
+  gsave 
+  /FiraCode-Regular findfont
+  28 scalefont
+  setfont
+
+  110 440 translate
+
+  /xpos 0 def 
+  /ypos 0 def 
+  /newline { 
+    ypos 36 sub 
+    /ypos exch def 
+    xpos ypos moveto 
+  } def
+  /n { show newline }
+
+  /txt { set-black show } def 
+
+  /sym { set-purple show } def 
+
+  xpos ypos moveto 
+
+  (side ) txt (:) show-purple ( Int ) txt (->) sym ( Picture ) txt (->) sym ( Picture) txt newline
+
+  (side n p ) txt (=) sym newline 
+  4 indent (if n ) txt (<=) sym ( 0 then blank) txt newline 
+  4 indent (else) txt newline 
+  8 indent (let) txt newline 
+  12 indent (s ) txt (=) sym ( side ) txt (\() sym (n ) txt (-) sym ( 1) txt (\)) sym ( p) txt newline 
+  12 indent (t ) txt (=) sym ( ttile p) txt newline 
+  8 indent (in) txt newline 
+  12 indent (quartet s s ) txt (\() sym (turn t) txt (\)) sym ( t) txt newline 
+  
+  grestore 
+} def
+
+
 /draw-quartet-function {
   gsave 
   /FiraCode-Regular findfont
@@ -9617,7 +9655,15 @@ draw-footer
 
 showpage
 
+%%Page: 50 50
+
+draw-side-function
+draw-header 
+draw-footer
+
+showpage
+
 
 %%Trailer
-%%Pages:      49
+%%Pages:      50
 %%EOF
