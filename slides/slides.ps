@@ -7536,6 +7536,42 @@ FontName currentdict end definefont pop
   grestore 
 } def
 
+/draw-corner-function {
+  gsave 
+  /FiraCode-Regular findfont
+  28 scalefont
+  setfont
+
+  70 440 translate
+
+  /xpos 0 def 
+  /ypos 0 def 
+  /newline { 
+    ypos 36 sub 
+    /ypos exch def 
+    xpos ypos moveto 
+  } def
+  /n { show newline }
+
+  /txt { set-black show } def 
+
+  /sym { set-purple show } def 
+
+  xpos ypos moveto 
+
+  (corner ) txt (:) show-purple ( Int ) txt (->) sym ( Picture ) txt (->) sym ( Picture) txt newline
+
+  (corner n p ) txt (=) sym newline 
+  4 indent (if n ) txt (<=) sym ( 0 then blank) txt newline 
+  4 indent (else) txt newline 
+  8 indent (let) txt newline 
+  12 indent (c ) txt (=) sym ( corner ) txt (\() sym (n ) txt (-) sym ( 1) txt (\)) sym ( p) txt newline 
+  12 indent (s ) txt (=) sym ( side ) txt (\() sym (n ) txt (-) sym ( 1) txt (\)) sym ( p) txt newline 
+  8 indent (in) txt newline 
+  12 indent (quartet c s ) txt (\() sym (turn s) txt (\)) sym ( ) txt (\() sym (utile p) txt (\)) sym newline 
+  
+  grestore 
+} def
 
 /draw-quartet-function {
   gsave 
@@ -9663,7 +9699,99 @@ draw-footer
 
 showpage
 
+%%Page: 51 51
+
+(corner 0) draw-title
+
+gsave 
+100 150 translate
+[[25 25][200 0][0 200]] fish
+grestore  
+
+draw-implication-arrow
+
+gsave 
+pagew 100 sub 250 sub 150 translate
+[[25 25][200 0][0 200]] /fish load 0 corner exec
+grestore  
+
+draw-header 
+draw-footer
+
+showpage
+
+%%Page: 52 52
+
+(corner 1) draw-title
+
+gsave 
+100 150 translate
+[[25 25][200 0][0 200]] fish
+grestore  
+
+draw-implication-arrow
+
+gsave 
+pagew 100 sub 250 sub 150 translate
+[[25 25][200 0][0 200]] /fish load 1 corner exec
+grestore  
+
+draw-header 
+draw-footer
+
+showpage
+
+%%Page: 53 53
+
+(corner 2) draw-title
+
+gsave 
+100 150 translate
+[[25 25][200 0][0 200]] fish
+grestore  
+
+draw-implication-arrow
+
+gsave 
+pagew 100 sub 250 sub 150 translate
+[[25 25][200 0][0 200]] /fish load 2 corner exec
+grestore  
+
+draw-header 
+draw-footer
+
+showpage
+
+%%Page: 54 54
+
+(corner 3) draw-title
+
+gsave 
+100 150 translate
+[[25 25][200 0][0 200]] fish
+grestore  
+
+draw-implication-arrow
+
+gsave 
+pagew 100 sub 250 sub 150 translate
+[[25 25][200 0][0 200]] /fish load 3 corner exec
+grestore  
+
+draw-header 
+draw-footer
+
+showpage
+
+%%Page: 55 55
+
+draw-corner-function
+draw-header 
+draw-footer
+
+showpage
+
 
 %%Trailer
-%%Pages:      50
+%%Pages:      55
 %%EOF
